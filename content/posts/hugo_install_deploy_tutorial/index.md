@@ -126,24 +126,24 @@ git init
 
 ## 四、安装 Hugo 主题
 
-这里使用 Ananke 主题作为入门主题。
+这里使用 PaperMod 主题，它是一个简洁、高性能的 Hugo 主题。
 
 执行：
 
 ```powershell
-git submodule add https://github.com/gohugo-ananke/ananke themes/ananke
+git submodule add https://github.com/adityatelange/hugo-PaperMod themes/PaperMod
 ```
 
 然后把主题写入 `hugo.toml`：
 
 ```powershell
-Add-Content hugo.toml "theme = 'ananke'"
+Add-Content hugo.toml "theme = 'PaperMod'"
 ```
 
 也可以手动打开 `hugo.toml`，保证里面有这一行：
 
 ```toml
-theme = 'ananke'
+theme = 'PaperMod'
 ```
 
 ---
@@ -162,11 +162,48 @@ code .
 baseURL = 'https://shuaize6.github.io/blog/'
 languageCode = 'zh-cn'
 title = 'Xu 的技术博客'
-theme = 'ananke'
+theme = 'PaperMod'
 
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+[params]
+  env = 'production'
+  title = 'Xu 的技术博客'
+  description = '记录 AI Infra、CUDA、nano-vLLM 学习笔记'
+  keywords = ['Blog', 'AI Infra', 'CUDA', 'nano-vLLM', 'Hugo']
+  author = 'Xu'
+  defaultTheme = 'auto'
+  ShowReadingTime = true
+  ShowBreadCrumbs = true
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowToc = true
+  TocOpen = false
+
+[params.homeInfoParams]
+  Title = '你好，我是 Xu'
+  Content = '这里记录 AI Infra、CUDA 算子优化、nano-vLLM 源码阅读和相关学习笔记。'
+
+[[menu.main]]
+  identifier = 'posts'
+  name = '文章'
+  url = '/posts/'
+  weight = 10
+
+[[menu.main]]
+  identifier = 'tags'
+  name = '标签'
+  url = '/tags/'
+  weight = 20
+
+[[menu.main]]
+  identifier = 'archives'
+  name = '归档'
+  url = '/archives/'
+  weight = 30
 ```
 
 这里需要注意：
@@ -182,20 +219,25 @@ baseURL = 'https://shuaize6.github.io/blog/'
 
 最后的 `/blog/` 不要漏掉。
 
+PaperMod 还有很多可配置项，具体可以参考 [PaperMod 官方文档](https://github.com/adityatelange/hugo-PaperMod/wiki)。
+
 ---
 
 ## 六、创建第一篇文章
 
-执行：
+建议使用 Hugo 的 page bundle（文件夹形式）来组织文章，这样文章的图片可以和 Markdown 文件放在同一个文件夹里，管理起来更方便。
+
+首先创建文章文件夹和 index.md：
 
 ```powershell
-hugo new content content/posts/my-first-post.md
+mkdir content\posts\my-first-post
+hugo new content content/posts/my-first-post/index.md
 ```
 
 然后打开文章文件：
 
 ```powershell
-code .\content\posts\my-first-post.md
+code .\content\posts\my-first-post\index.md
 ```
 
 文章开头一般会有 front matter：
@@ -246,6 +288,20 @@ draft = false
 ## 下一步计划
 
 接下来我会继续完善博客主题，并尝试把网站部署到 GitHub Pages。
+```
+
+如果需要插入图片，直接把图片文件放到文章文件夹里：
+
+```text
+content/posts/my-first-post/
+├── index.md
+└── example.png
+```
+
+然后在 Markdown 中引用：
+
+```markdown
+![图片说明](example.png)
 ```
 
 ---
@@ -541,7 +597,7 @@ draft = false
 然后提交：
 
 ```powershell
-git add content\posts\my-first-post.md
+git add -A
 git commit -m "Publish first post"
 git push
 ```
@@ -625,26 +681,45 @@ mkdir -p "${HOME}/.local/hugo"
 
 ## 十五、以后如何写新文章
 
-创建新文章：
+以创建一篇叫 `my-new-post` 的文章为例。
+
+创建文章文件夹和 index.md：
 
 ```powershell
-hugo new content content/posts/nanovllm-learning-notes.md
+mkdir content\posts\my-new-post
+hugo new content content/posts/my-new-post/index.md
 ```
 
 打开编辑：
 
 ```powershell
-code .\content\posts\nanovllm-learning-notes.md
+code .\content\posts\my-new-post\index.md
 ```
 
 确认文章开头：
 
 ```toml
 +++
-title = 'Nanovllm Learning Notes'
+title = 'My New Post'
 date = 2026-06-16T00:00:00+09:00
 draft = false
 +++
+```
+
+如果文章有图片，把图片放到同一个文件夹里：
+
+```text
+content/posts/my-new-post/
+├── index.md
+├── screenshot.png
+└── diagram.png
+```
+
+在 Markdown 中引用图片（使用相对路径）：
+
+```markdown
+![截图说明](screenshot.png)
+![示意图](diagram.png)
 ```
 
 本地预览：
@@ -653,11 +728,11 @@ draft = false
 hugo server -D
 ```
 
-提交并发布：
+提交并发布（使用 `git add -A` 是因为文件夹结构会同时涉及新文件创建和旧文件删除）：
 
 ```powershell
-git add content\posts\nanovllm-learning-notes.md
-git commit -m "Publish nano-vLLM learning notes"
+git add -A
+git commit -m "Add new post: my new post"
 git push
 ```
 
