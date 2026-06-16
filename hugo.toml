@@ -1,4 +1,45 @@
 baseURL = 'https://shuaize6.github.io/blog/'
-locale = 'en-us'
+languageCode = 'zh-cn'
 title = 'Xu 的技术博客'
-theme = 'ananke'
+theme = 'PaperMod'
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
+[params]
+  env = 'production'
+  title = 'Xu 的技术博客'
+  description = '记录 AI Infra、CUDA、nano-vLLM 学习笔记'
+  keywords = ['Blog', 'AI Infra', 'CUDA', 'nano-vLLM', 'Hugo']
+  author = 'Xu'
+  defaultTheme = 'auto'
+  ShowReadingTime = true
+  ShowBreadCrumbs = true
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowToc = true
+  TocOpen = false
+
+[params.homeInfoParams]
+  Title = '你好，我是 Xu'
+  Content = '这里记录 AI Infra、CUDA 算子优化、nano-vLLM 源码阅读和相关学习笔记。'
+
+[[menu.main]]
+  identifier = 'posts'
+  name = '文章'
+  url = '/posts/'
+  weight = 10
+
+[[menu.main]]
+  identifier = 'tags'
+  name = '标签'
+  url = '/tags/'
+  weight = 20
+
+[[menu.main]]
+  identifier = 'archives'
+  name = '归档'
+  url = '/archives/'
+  weight = 30
