@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p content/posts/hugo_install_deploy_tutorial)",
+      "Bash(mv content/posts/hugo_install_deploy_tutorial.md content/posts/hugo_install_deploy_tutorial/index.md)",
+      "Bash(hugo --gc --minify)",
+      "Bash(hugo server *)",
+      "Bash(git add *)",
+      "Bash(git rm *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(gh run *)"
+    ]
+  }
+}
