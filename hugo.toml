@@ -21,6 +21,7 @@ theme = 'PaperMod'
   ShowWordCount = true
   ShowToc = true
   TocOpen = false
+  math = true
 
 [params.homeInfoParams]
   Title = '你好，我是 Xu'

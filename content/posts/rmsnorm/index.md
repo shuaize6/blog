@@ -3,6 +3,7 @@ date = '2026-08-05T21:26:13+08:00'
 draft = false
 title = 'RMSNorm CUDA Kernel 实现与优化'
 tags = ['CUDA', 'RMSNorm', 'LLM', '算子优化']
+math = true
 +++
 
 ## 1. 背景
