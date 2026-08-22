@@ -1,6 +1,6 @@
 +++
 date = '2026-08-08T13:27:12+08:00'
-draft = true
+draft = false
 title = 'Cuda性能分析工具'
 +++
 下面这份可以直接作为后续学习记录。
