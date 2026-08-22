@@ -1,3 +1,6 @@
 # Hugo build output
 .hugo_build.lock
 public/
+
+# Notes / drafts kept alongside posts
+**/Learning-CUDA_RMSNorm_Git_Notes.md
