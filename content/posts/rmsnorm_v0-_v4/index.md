@@ -33,15 +33,15 @@ tags = ['CUDA', 'RMSNorm', 'Nsight Compute', '算子优化', 'FP16', '向量化'
 
 对每一行输入 `x`：
 
-\[
+$$
 r = \frac{1}{\sqrt{\frac{1}{N}\sum_i x_i^2 + \epsilon}}
-\]
+$$
 
 最终输出：
 
-\[
+$$
 y_i = x_i \cdot r \cdot weight_i
-\]
+$$
 
 实现时采用：
 
